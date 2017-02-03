@@ -1,0 +1,80 @@
+<nav class="navbar navbar-light">
+  <div class="container">
+
+    <a class="navbar-brand"
+      ui-sref="app.home"
+      ng-bind="::$ctrl.appName | lowercase">
+    </a>
+
+    <!-- Show this for logged out users -->
+    <ul show-authed="false"
+      class="nav navbar-nav pull-xs-right">
+
+      <li class="nav-item">
+        <a class="nav-link"
+          ui-sref-active="active"
+          ui-sref="app.home">
+          <button class="btn" "btn-primary" type="button">Home</button>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link"
+          ui-sref-active="active"
+          ui-sref="app.login">
+          <button class="btn" "btn-primary" type="button">Login</button>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link"
+          ui-sref-active="active"
+          ui-sref="app.register">
+          <button class="btn" "btn-primary" type="button">Sign up</button>
+        </a>
+      </li>
+
+    </ul>
+
+    <!-- Show this for logged in users -->
+    <ul show-authed="true"
+      class="nav navbar-nav pull-xs-right">
+
+      <li class="nav-item">
+        <a class="nav-link"
+          ui-sref-active="active"
+          ui-sref="app.home">
+          <button class="btn" "btn-primary" type="button">Home</button>
+        </a>
+      </li>
+
+
+      <li class="nav-item">
+        <a class="nav-link"
+          ui-sref-active="active"
+          ui-sref="app.editor">
+          <button class="btn" "btn-primary" type="button">New Article</button>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link"
+          ui-sref-active="active"
+          ui-sref="app.settings">
+          <button class="btn" "btn-primary" type="button">Settings</button>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link"
+          ui-sref-active="active"
+          ui-sref="app.profile({ username: $ctrl.currentUser.username})">
+          <button class="btn" "btn-primary" type="button">{{ $ctrl.currentUser.username }}</button>
+        </a>
+      </li>
+
+    </ul>
+
+
+  </div>
+</nav>

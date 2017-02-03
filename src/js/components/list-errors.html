@@ -1,0 +1,10 @@
+<ul class="error-messages" ng-show="$ctrl.errors">
+<!-- This iterates through every key in the object -->
+    <div ng-repeat="(field, errors) in $ctrl.errors">
+    <!-- While this repeat is for the strings in the object -->
+        <li ng-repeat="error in errors">
+        <!-- display the field (e-mail, pass etc) and the error associated to the field -->
+        {{field}} {{error}}
+        </li>
+    </div>
+</ul>
