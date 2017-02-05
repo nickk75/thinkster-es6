@@ -38951,7 +38951,32 @@ _angular2.default.bootstrap(document, ['app'], {
   strictDi: true
 });
 
-},{"./article":8,"./auth":11,"./components":14,"./config/app.config":17,"./config/app.constants":18,"./config/app.run":19,"./config/app.templates":20,"./editor":24,"./home":27,"./layout":30,"./profile":31,"./services":35,"./settings":39,"angular":3,"angular-ui-router":1}],6:[function(require,module,exports){
+},{"./article":9,"./auth":12,"./components":15,"./config/app.config":18,"./config/app.constants":19,"./config/app.run":20,"./config/app.templates":21,"./editor":25,"./home":28,"./layout":31,"./profile":32,"./services":36,"./settings":40,"angular":3,"angular-ui-router":1}],6:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var ArticleActionsCtrl = function ArticleActionsCtrl() {
+  'ngInject';
+
+  _classCallCheck(this, ArticleActionsCtrl);
+};
+
+var ArticleActions = {
+  bindings: {
+    article: '='
+  },
+  controller: ArticleActionsCtrl,
+  templateUrl: 'article/article-actions.html'
+};
+
+exports.default = ArticleActions;
+
+},{}],7:[function(require,module,exports){
 'use strict';
 
 ArticleConfig.$inject = ["$stateProvider"];
@@ -38984,11 +39009,11 @@ function ArticleConfig($stateProvider) {
 
 exports.default = ArticleConfig;
 
-},{}],7:[function(require,module,exports){
+},{}],8:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 
 var _marked = require('marked');
@@ -39000,21 +39025,21 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var ArticleCtrl = function ArticleCtrl(article, $sce, $rootScope) {
-    'ngInject';
+  'ngInject';
 
-    _classCallCheck(this, ArticleCtrl);
+  _classCallCheck(this, ArticleCtrl);
 
-    this.article = article;
+  this.article = article;
 
-    $rootScope.setPageTitle(this.article.title);
+  $rootScope.setPageTitle(this.article.title);
 
-    this.article.body = $sce.trustAsHtml((0, _marked2.default)(this.article.body, { sanitize: true }));
+  this.article.body = $sce.trustAsHtml((0, _marked2.default)(this.article.body, { sanitize: true }));
 };
 ArticleCtrl.$inject = ["article", "$sce", "$rootScope"];
 
 exports.default = ArticleCtrl;
 
-},{"marked":4}],8:[function(require,module,exports){
+},{"marked":4}],9:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -39033,6 +39058,10 @@ var _article3 = require('./article.controller');
 
 var _article4 = _interopRequireDefault(_article3);
 
+var _articleActions = require('./article-actions.component');
+
+var _articleActions2 = _interopRequireDefault(_articleActions);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 // Create the module where our functionality can attach to
@@ -39046,9 +39075,11 @@ articleModule.config(_article2.default);
 
 articleModule.controller('ArticleCtrl', _article4.default);
 
+articleModule.component('articleActions', _articleActions2.default);
+
 exports.default = articleModule;
 
-},{"./article.config":6,"./article.controller":7,"angular":3}],9:[function(require,module,exports){
+},{"./article-actions.component":6,"./article.config":7,"./article.controller":8,"angular":3}],10:[function(require,module,exports){
 'use strict';
 
 AuthConfig.$inject = ["$stateProvider", "$httpProvider"];
@@ -39089,7 +39120,7 @@ function AuthConfig($stateProvider, $httpProvider) {
 
 exports.default = AuthConfig;
 
-},{}],10:[function(require,module,exports){
+},{}],11:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -39136,7 +39167,7 @@ var AuthCtrl = function () {
 
 exports.default = AuthCtrl;
 
-},{}],11:[function(require,module,exports){
+},{}],12:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -39168,7 +39199,7 @@ authModule.controller('AuthCtrl', _auth4.default);
 
 exports.default = authModule;
 
-},{"./auth.config":9,"./auth.controller":10,"angular":3}],12:[function(require,module,exports){
+},{"./auth.config":10,"./auth.controller":11,"angular":3}],13:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -39184,7 +39215,7 @@ var ArticleMeta = {
 
 exports.default = ArticleMeta;
 
-},{}],13:[function(require,module,exports){
+},{}],14:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -39244,7 +39275,7 @@ var FollowBtn = {
 
 exports.default = FollowBtn;
 
-},{}],14:[function(require,module,exports){
+},{}],15:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -39285,7 +39316,7 @@ componentsModule.component('articleMeta', _articleMeta2.default);
 
 exports.default = componentsModule;
 
-},{"./article-helpers/article-meta.component":12,"./buttons/follow-btn.component":13,"./list-errors.component":15,"./show-authed.directive":16,"angular":3}],15:[function(require,module,exports){
+},{"./article-helpers/article-meta.component":13,"./buttons/follow-btn.component":14,"./list-errors.component":16,"./show-authed.directive":17,"angular":3}],16:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -39302,7 +39333,7 @@ var ListErrors = {
 
 exports.default = ListErrors;
 
-},{}],16:[function(require,module,exports){
+},{}],17:[function(require,module,exports){
 'use strict';
 
 ShowAuthed.$inject = ["User"];
@@ -39347,7 +39378,7 @@ function ShowAuthed(User) {
 
 exports.default = ShowAuthed;
 
-},{}],17:[function(require,module,exports){
+},{}],18:[function(require,module,exports){
 'use strict';
 
 AppConfig.$inject = ["$httpProvider", "$stateProvider", "$locationProvider", "$urlRouterProvider"];
@@ -39387,7 +39418,7 @@ function AppConfig($httpProvider, $stateProvider, $locationProvider, $urlRouterP
 
 exports.default = AppConfig;
 
-},{"./auth.interceptor":21}],18:[function(require,module,exports){
+},{"./auth.interceptor":22}],19:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -39401,7 +39432,7 @@ var AppConstants = {
 
 exports.default = AppConstants;
 
-},{}],19:[function(require,module,exports){
+},{}],20:[function(require,module,exports){
 'use strict';
 
 AppRun.$inject = ["AppConstants", "$rootScope"];
@@ -39430,25 +39461,26 @@ function AppRun(AppConstants, $rootScope) {
 
 exports.default = AppRun;
 
-},{}],20:[function(require,module,exports){
+},{}],21:[function(require,module,exports){
 "use strict";
 
 angular.module("templates", []).run(["$templateCache", function ($templateCache) {
-  $templateCache.put("article/article.html", "<div class=\"article-page\">\r\n\r\n  <!-- Banner for article title, action buttons -->\r\n  <div class=\"banner\">\r\n    <div class=\"container\">\r\n\r\n      <h1 ng-bind=\"::$ctrl.article.title\"></h1>\r\n\r\n      <div class=\"article-meta\">\r\n        <!-- Show author info + favorite & follow buttons -->\r\n        <div class=\"article-meta\">\r\n          <a href=\"\"><img /></a>\r\n          <div class=\"info\">\r\n            <a href=\"\" class=\"author\">Brad Green</a>\r\n            <span class=\"date\">January 20th</span>\r\n          </div>\r\n\r\n          <button class=\"btn btn-sm btn-outline-secondary\">\r\n            <i class=\"ion-plus-round\"></i>\r\n            &nbsp;\r\n            Follow Brad Green\r\n          </button>\r\n          &nbsp;\r\n          <button class=\"btn btn-sm btn-outline-primary\">\r\n            <i class=\"ion-heart\"></i>\r\n            &nbsp;\r\n            Favorite Article <span class=\"counter\">(29)</span>\r\n          </button>\r\n        </div>\r\n      </div>\r\n\r\n    </div>\r\n  </div>\r\n\r\n\r\n\r\n  <!-- Main view. Contains article html and comments -->\r\n  <div class=\"container page\">\r\n\r\n    <!-- Article\'s HTML & tags rendered here -->\r\n    <div class=\"row article-content\">\r\n      <div class=\"col-xs-12\">\r\n\r\n        <div>\r\n          <div ng-bind-html=\"::$ctrl.article.body\"></div>\r\n        </div>\r\n\r\n        <ul class=\"tag-list\">\r\n          <li class=\"tag-default tag-pill tag-outline\"\r\n            ng-repeat=\"tag in ::$ctrl.article.tagList\">\r\n            {{ tag }}\r\n          </li>\r\n        </ul>\r\n\r\n      </div>\r\n    </div>\r\n\r\n    <hr />\r\n\r\n    <div class=\"article-actions\">\r\n\r\n      <!-- Show author info + favorite & follow buttons -->\r\n      <div class=\"article-meta\">\r\n        <a href=\"\"><img /></a>\r\n        <div class=\"info\">\r\n          <a href=\"\" class=\"author\">Brad Green</a>\r\n          <span class=\"date\">January 20th</span>\r\n        </div>\r\n\r\n        <button class=\"btn btn-sm btn-outline-secondary\">\r\n          <i class=\"ion-plus-round\"></i>\r\n          &nbsp;\r\n          Follow Brad Green\r\n        </button>\r\n        &nbsp;\r\n        <button class=\"btn btn-sm btn-outline-primary\">\r\n          <i class=\"ion-heart\"></i>\r\n          &nbsp;\r\n          Favorite Article <span class=\"counter\">(29)</span>\r\n        </button>\r\n      </div>\r\n\r\n    </div>\r\n\r\n    <!-- Comments section -->\r\n    <div class=\"row\">\r\n      <div class=\"col-xs-12 col-md-8 offset-md-2\">\r\n\r\n        <div>\r\n          <form class=\"card comment-form\">\r\n            <div class=\"card-block\">\r\n              <textarea class=\"form-control\"\r\n                placeholder=\"Write a comment...\"\r\n                rows=\"3\"></textarea>\r\n            </div>\r\n            <div class=\"card-footer\">\r\n              <img class=\"comment-author-img\" />\r\n              <button class=\"btn btn-sm btn-primary\" type=\"submit\">\r\n               Post Comment\r\n              </button>\r\n            </div>\r\n          </form>\r\n        </div>\r\n\r\n        <div class=\"card\">\r\n          <div class=\"card-block\">\r\n            <p class=\"card-text\">This is an example comment.</p>\r\n          </div>\r\n          <div class=\"card-footer\">\r\n            <a class=\"comment-author\" href=\"\">\r\n              <img class=\"comment-author-img\" />\r\n            </a>\r\n            &nbsp;\r\n            <a class=\"comment-author\" href=\"\">\r\n              BradGreen\r\n            </a>\r\n            <span class=\"date-posted\">\r\n              Jan 20, 2016\r\n            </span>\r\n          </div>\r\n        </div>\r\n\r\n\r\n      </div>\r\n    </div>\r\n\r\n  </div>\r\n\r\n\r\n\r\n</div>\r\n");
-  $templateCache.put("auth/auth.html", "<div class=\"auth-page\">\r\n  <div class=\"container page\">\r\n    <div class=\"row\">\r\n\r\n      <div class=\"col-md-6 offset-md-3 col-xs-12\">\r\n        <h1 class=\"text-xs-center\" ng-bind=\"::$ctrl.title\"></h1>\r\n        <p class=\"text-xs-center\">\r\n          <a ui-sref=\"app.login\"\r\n            ng-show=\"$ctrl.authType === \'register\'\">\r\n            Have an account?\r\n          </a>\r\n          <a ui-sref=\"app.register\"\r\n            ng-show=\"$ctrl.authType === \'login\'\">\r\n            Need an account?\r\n          </a>\r\n        </p>\r\n\r\n        <list-errors errors=\"$ctrl.errors\"></list-errors>\r\n\r\n        <form ng-submit=\"$ctrl.submitForm()\">\r\n          <fieldset ng-disabled=\"$ctrl.isSubmitting\">\r\n\r\n            <fieldset class=\"form-group\" ng-show=\"$ctrl.authType === \'register\'\">\r\n              <input class=\"form-control form-control-lg\"\r\n                type=\"text\"\r\n                placeholder=\"Username\"\r\n                ng-model=\"$ctrl.formData.username\" />\r\n            </fieldset>\r\n\r\n            <fieldset class=\"form-group\">\r\n              <input class=\"form-control form-control-lg\"\r\n                type=\"email\"\r\n                placeholder=\"Email\"\r\n                ng-model=\"$ctrl.formData.email\" />\r\n            </fieldset>\r\n\r\n            <fieldset class=\"form-group\">\r\n              <input class=\"form-control form-control-lg\"\r\n                type=\"password\"\r\n                placeholder=\"Password\"\r\n                ng-model=\"$ctrl.formData.password\" />\r\n            </fieldset>\r\n\r\n            <button class=\"btn btn-lg btn-primary pull-xs-right\"\r\n              type=\"submit\" ng-bind=\"::$ctrl.title\">\r\n            </button>\r\n\r\n          </fieldset>\r\n        </form>\r\n      </div>\r\n\r\n    </div>\r\n  </div>\r\n</div>");
-  $templateCache.put("components/list-errors.html", "<ul class=\"error-messages\" ng-show=\"$ctrl.errors\">\r\n<!-- This iterates through every key in the object -->\r\n    <div ng-repeat=\"(field, errors) in $ctrl.errors\">\r\n    <!-- While this repeat is for the strings in the object -->\r\n        <li ng-repeat=\"error in errors\">\r\n        <!-- display the field (e-mail, pass etc) and the error associated to the field -->\r\n        {{field}} {{error}}\r\n        </li>\r\n    </div>\r\n</ul>");
-  $templateCache.put("editor/editor.html", "<div class=\"editor-page\">\r\n  <div class=\"container page\">\r\n    <div class=\"row\">\r\n      <div class=\"col-md-10 offset-md-1 col-xs-12\">\r\n\r\n        <list-errors errors=\"$ctrl.errors\"></list-errors>\r\n\r\n        <form>\r\n          <fieldset ng-disabled=\"$ctrl.isSubmitting\">\r\n\r\n            <fieldset class=\"form-group\">\r\n              <input class=\"form-control form-control-lg\"\r\n                ng-model=\"$ctrl.article.title\"\r\n                type=\"text\"\r\n                placeholder=\"Article Title\" />\r\n            </fieldset>\r\n\r\n            <fieldset class=\"form-group\">\r\n              <input class=\"form-control\"\r\n                ng-model=\"$ctrl.article.description\"\r\n                type=\"text\"\r\n                placeholder=\"What\'s this article about?\" />\r\n            </fieldset>\r\n\r\n            <fieldset class=\"form-group\">\r\n              <textarea class=\"form-control\"\r\n                rows=\"8\"\r\n                ng-model=\"$ctrl.article.body\"\r\n                placeholder=\"Write your article (in markdown)\">\r\n              </textarea>\r\n            </fieldset>\r\n\r\n            <fieldset class=\"form-group\">\r\n              <input class=\"form-control\"\r\n                type=\"text\"\r\n                placeholder=\"Enter tags\"\r\n                ng-model=\"$ctrl.tagField\"\r\n                ng-keyup=\"$event.keyCode == 13 && $ctrl.addTag()\" />\r\n\r\n              <div class=\"tag-list\">\r\n                <span ng-repeat=\"tag in $ctrl.article.tagList\"\r\n                  class=\"tag-default tag-pill\">\r\n                  <i class=\"ion-close-round\" ng-click=\"$ctrl.removeTag(tag)\"></i>\r\n                  {{ tag }}\r\n                </span>\r\n              </div>\r\n            </fieldset>\r\n\r\n            <button class=\"btn btn-lg pull-xs-right btn-primary\" type=\"button\" ng-click=\"$ctrl.submit()\">\r\n              Publish Article\r\n            </button>\r\n\r\n          </fieldset>\r\n        </form>\r\n\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>");
-  $templateCache.put("home/home.html", " <div class=\"home-page\">\r\n\r\n  <!-- Splash banner that only shows when not logged in -->\r\n  <div class=\"banner\" show-authed=\"false\">\r\n    <div class=\"container\">\r\n      <h1 class=\"logo-font\" ng-bind=\"::$ctrl.appName | lowercase\"></h1>\r\n      <p>A place to share your knowledge.</p>\r\n    </div>\r\n  </div>\r\n\r\n  <div class=\"container page\">\r\n    <div class=\"row\">\r\n\r\n\r\n      <!-- Main view - contains tabs & article list -->\r\n      <div class=\"col-md-9\">\r\n        <!-- Tabs for toggling between feed, article lists -->\r\n        <div class=\"feed-toggle\">\r\n          <ul class=\"nav nav-pills outline-active\">\r\n\r\n            <li class=\"nav-item\" show-authed=\"true\">\r\n              <a href=\"\" class=\"nav-link active\">\r\n                Your Feed\r\n              </a>\r\n            </li>\r\n\r\n            <li class=\"nav-item\">\r\n              <a href=\"\" class=\"nav-link\">\r\n                Global Feed\r\n              </a>\r\n            </li>\r\n\r\n          </ul>\r\n        </div>\r\n\r\n        <!-- List the current articles -->\r\n        <div class=\"article-preview\">\r\n          <div class=\"article-meta\">\r\n            <a href=\"\"><img /></a>\r\n            <div class=\"info\">\r\n              <a href=\"\" class=\"author\">BradGreen</a>\r\n              <span class=\"date\">January 20th</span>\r\n            </div>\r\n            <button class=\"btn btn-outline-primary btn-sm pull-xs-right\">\r\n              <i class=\"ion-heart\"></i> 29\r\n            </button>\r\n          </div>\r\n          <a href=\"\" class=\"preview-link\">\r\n            <h1>How to build Angular apps that scale</h1>\r\n            <p>Building web applications is not an easy task. It\'s even hard to make ones that scale.</p>\r\n            <span>Read more...</span>\r\n            <ul class=\"tag-list\">\r\n              <li class=\"tag-default tag-pill tag-outline\">programming</li>\r\n              <li class=\"tag-default tag-pill tag-outline\">web</li>\r\n            </ul>\r\n          </a>\r\n        </div>\r\n\r\n      </div>\r\n\r\n      <!-- Sidebar where popular tags are listed -->\r\n      <div class=\"col-md-3\">\r\n        <div class=\"sidebar\">\r\n\r\n          <p>Popular Tags</p>\r\n\r\n          <div class=\"tag-list\">\r\n            <a href=\"\" class=\"tag-default tag-pill\">\r\n              Tag One\r\n            </a>\r\n            <a href=\"\" class=\"tag-default tag-pill\">\r\n              Tag Two\r\n            </a>\r\n          </div>\r\n\r\n        </div>\r\n      </div>\r\n\r\n      <!-- End the row & container divs -->\r\n    </div>\r\n  </div>\r\n\r\n</div>\r\n");
-  $templateCache.put("layout/app-view.html", "<app-header></app-header>\r\n\r\n<div ui-view></div>\r\n\r\n<app-footer></app-footer>\r\n");
-  $templateCache.put("layout/footer.html", "<footer>\r\n  <div class=\"container\">\r\n    <a class=\"logo-font\" ui-sref=\"app.home\" ng-bind=\"::$ctrl.appName | lowercase\"></a>\r\n    <span class=\"attribution\">\r\n      &copy; {{::$ctrl.date | date:\'yyyy\'}}.\r\n      An interactive learning project from <a href=\"https://thinkster.io\">Thinkster</a>.\r\n      Code licensed under MIT.\r\n    </span>\r\n  </div>\r\n</footer>\r\n");
-  $templateCache.put("layout/header.html", "<nav class=\"navbar navbar-light\">\r\n  <div class=\"container\">\r\n\r\n    <a class=\"navbar-brand\"\r\n      ui-sref=\"app.home\"\r\n      ng-bind=\"::$ctrl.appName | lowercase\">\r\n    </a>\r\n\r\n    <!-- Show this for logged out users -->\r\n    <ul show-authed=\"false\"\r\n      class=\"nav navbar-nav pull-xs-right\">\r\n\r\n      <li class=\"nav-item\">\r\n        <a class=\"nav-link\"\r\n          ui-sref-active=\"active\"\r\n          ui-sref=\"app.home\">\r\n          <button class=\"btn\" \"btn-primary\" type=\"button\">Home</button>\r\n        </a>\r\n      </li>\r\n\r\n      <li class=\"nav-item\">\r\n        <a class=\"nav-link\"\r\n          ui-sref-active=\"active\"\r\n          ui-sref=\"app.login\">\r\n          <button class=\"btn\" \"btn-primary\" type=\"button\">Login</button>\r\n        </a>\r\n      </li>\r\n\r\n      <li class=\"nav-item\">\r\n        <a class=\"nav-link\"\r\n          ui-sref-active=\"active\"\r\n          ui-sref=\"app.register\">\r\n          <button class=\"btn\" \"btn-primary\" type=\"button\">Sign up</button>\r\n        </a>\r\n      </li>\r\n\r\n    </ul>\r\n\r\n    <!-- Show this for logged in users -->\r\n    <ul show-authed=\"true\"\r\n      class=\"nav navbar-nav pull-xs-right\">\r\n\r\n      <li class=\"nav-item\">\r\n        <a class=\"nav-link\"\r\n          ui-sref-active=\"active\"\r\n          ui-sref=\"app.home\">\r\n          <button class=\"btn\" \"btn-primary\" type=\"button\">Home</button>\r\n        </a>\r\n      </li>\r\n\r\n\r\n      <li class=\"nav-item\">\r\n        <a class=\"nav-link\"\r\n          ui-sref-active=\"active\"\r\n          ui-sref=\"app.editor\">\r\n          <button class=\"btn\" \"btn-primary\" type=\"button\">New Article</button>\r\n        </a>\r\n      </li>\r\n\r\n      <li class=\"nav-item\">\r\n        <a class=\"nav-link\"\r\n          ui-sref-active=\"active\"\r\n          ui-sref=\"app.settings\">\r\n          <button class=\"btn\" \"btn-primary\" type=\"button\">Settings</button>\r\n        </a>\r\n      </li>\r\n\r\n      <li class=\"nav-item\">\r\n        <a class=\"nav-link\"\r\n          ui-sref-active=\"active\"\r\n          ui-sref=\"app.profile({ username: $ctrl.currentUser.username})\">\r\n          <button class=\"btn\" \"btn-primary\" type=\"button\">{{ $ctrl.currentUser.username }}</button>\r\n        </a>\r\n      </li>\r\n\r\n    </ul>\r\n\r\n\r\n  </div>\r\n</nav>\r\n");
-  $templateCache.put("profile/profile.html", "<div class=\"profile-page\">\r\n\r\n  <!-- User\'s basic info & action buttons -->\r\n  <div class=\"user-info\">\r\n    <div class=\"container\">\r\n      <div class=\"row\">\r\n        <div class=\"col-xs-12 col-md-10 offset-md-1\">\r\n\r\n          <img ng-src=\"{{::$ctrl.profile.image}}\"img class=\"user-img\" />\r\n          <h4 ng-bind=\"::$ctrl.profile.username\"></h4>\r\n          <p ng-bind=\"::$ctrl.profile.bio\"></p>\r\n          <follow-btn user=\"$ctrl.profile\" ng-hide=\"$ctrl.isUser\"></follow-btn>\r\n\r\n          <a ui-sref=\"app.settings\"\r\n            class=\"btn btn-sm btn-outline-secondary action-btn\"\r\n            ng-show=\"$ctrl.isUser\">\r\n            <i class=\"ion-gear-a\"></i> Edit Profile Settings\r\n          </a>\r\n\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n\r\n  <!-- Container where User\'s posts & favs are list w/ toggle tabs -->\r\n  <div class=\"container\">\r\n    <div class=\"row\">\r\n\r\n      <div class=\"col-xs-12 col-md-10 offset-md-1\">\r\n\r\n        <!-- Tabs for switching between author articles & favorites -->\r\n        <div class=\"articles-toggle\">\r\n          <ul class=\"nav nav-pills outline-active\">\r\n\r\n            <li class=\"nav-item\">\r\n              <a class=\"nav-link active\">\r\n                My Articles\r\n              </a>\r\n            </li>\r\n\r\n            <li class=\"nav-item\">\r\n              <a class=\"nav-link\">\r\n                Favorited Articles\r\n              </a>\r\n            </li>\r\n\r\n          </ul>\r\n        </div>\r\n\r\n        <!-- List of articles -->\r\n        <div class=\"article-preview\">\r\n          <div class=\"article-meta\">\r\n            <a href=\"\"><img /></a>\r\n            <div class=\"info\">\r\n              <a href=\"\" class=\"author\">BradGreen</a>\r\n              <span class=\"date\">January 20th</span>\r\n            </div>\r\n            <button class=\"btn btn-outline-primary btn-sm pull-xs-right\">\r\n              <i class=\"ion-heart\"></i> 29\r\n            </button>\r\n          </div>\r\n          <a href=\"\" class=\"preview-link\">\r\n            <h1>How to build Angular apps that scale</h1>\r\n            <p>Building web applications is not an easy task. It\'s even hard to make ones that scale.</p>\r\n            <span>Read more...</span>\r\n            <ul class=\"tag-list\">\r\n              <li class=\"tag-default tag-pill tag-outline\">programming</li>\r\n              <li class=\"tag-default tag-pill tag-outline\">web</li>\r\n            </ul>\r\n          </a>\r\n        </div>\r\n\r\n\r\n      </div>\r\n\r\n    <!-- End row & container divs -->\r\n    </div>\r\n  </div>\r\n\r\n</div>\r\n");
-  $templateCache.put("settings/settings.html", "<div class=\"settings-page\">\r\n  <div class=\"container page\">\r\n    <div class=\"row\">\r\n      <div class=\"col-md-6 offset-md-3 col-xs-12\">\r\n\r\n        <h1 class=\"text-xs-center\">Your Settings</h1>\r\n\r\n        <list-errors errors=\"$ctrl.errors\"></list-errors>\r\n\r\n        <form ng-submit=\"$ctrl.submitForm()\">\r\n          <fieldset ng-disabled=\"$ctrl.isSubmitting\">\r\n\r\n            <fieldset class=\"form-group\">\r\n              <input class=\"form-control\"\r\n                type=\"text\"\r\n                placeholder=\"URL of profile picture\"\r\n                ng-model=\"$ctrl.formData.image\" />\r\n            </fieldset>\r\n\r\n            <fieldset class=\"form-group\">\r\n              <input class=\"form-control form-control-lg\"\r\n                type=\"text\"\r\n                placeholder=\"Username\"\r\n                ng-model=\"$ctrl.formData.username\" />\r\n            </fieldset>\r\n\r\n            <fieldset class=\"form-group\">\r\n              <textarea class=\"form-control form-control-lg\"\r\n                rows=\"8\"\r\n                placeholder=\"Short bio about you\"\r\n                ng-model=\"$ctrl.formData.bio\">\r\n              </textarea>\r\n            </fieldset>\r\n\r\n            <fieldset class=\"form-group\">\r\n              <input class=\"form-control form-control-lg\"\r\n                type=\"email\"\r\n                placeholder=\"Email\"\r\n                ng-model=\"$ctrl.formData.email\" />\r\n            </fieldset>\r\n\r\n            <fieldset class=\"form-group\">\r\n              <input class=\"form-control form-control-lg\"\r\n                type=\"password\"\r\n                placeholder=\"New Password\"\r\n                ng-model=\"$ctrl.formData.password\" />\r\n            </fieldset>\r\n\r\n            <button class=\"btn btn-lg btn-primary pull-xs-right\"\r\n              type=\"submit\">\r\n              Update Settings\r\n            </button>\r\n\r\n          </fieldset>\r\n        </form>\r\n\r\n        <!-- Line break for logout button -->\r\n        <hr />\r\n\r\n        <button class=\"btn btn-outline-danger\"\r\n                ng-click=\"$ctrl.logout()\">\r\n          Or click here to logout.\r\n        </button>\r\n\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>");
-  $templateCache.put("components/article-helpers/article-meta.html", "<div class=\"article-meta\">\r\n  <a ui-sref=\"app.profile({ username:$ctrl.article.author.username })\">\r\n    <img ng-src=\"{{$ctrl.article.author.image}}\" />\r\n  </a>\r\n\r\n  <div class=\"info\">\r\n    <a class=\"author\"\r\n      ui-sref=\"app.profile({ username:$ctrl.article.author.username })\"\r\n      ng-bind=\"$ctrl.article.author.username\">\r\n    </a>\r\n    <span class=\"date\"\r\n      ng-bind=\"$ctrl.article.createdAt | date: \'longDate\' \">\r\n    </span>\r\n  </div>\r\n\r\n  <ng-transclude></ng-transclude>\r\n</div>");
-  $templateCache.put("components/buttons/follow-btn.html", "<button\r\n    ng-class=\"{ \'disabled\' : $ctrl.isSubmitting,\r\n                \'btn-outline-secondary\': !$ctrl.user.following,\r\n                \'btn-secondary\': $ctrl.user.following }\"\r\n    \"btn btn-sm btn-outline-secondary action-btn\"\r\n    ng-click=\"$ctrl.submit()\">\r\n    <i class=\"ion-plus-round\"></i>\r\n    &nbsp;\r\n    {{ $ctrl.user.following ? \'Unfollow\' : \'Follow\'}} {{ $ctrl.user.username}}\r\n</button>");
+  $templateCache.put("article/article-actions.html", "<!-- Show author info + favorite & follow buttons -->\n<article-meta article=\"$ctrl.article\">\n  <button class=\"btn btn-sm btn-outline-secondary\">\n    <i class=\"ion-plus-round\"></i>\n    &nbsp;\n    Follow Brad Green\n  </button>\n  &nbsp;\n  <button class=\"btn btn-sm btn-outline-primary\">\n    <i class=\"ion-heart\"></i>\n    &nbsp;\n    Favorite Article <span class=\"counter\">(29)</span>\n  </button>\n</aritcle-meta>\n");
+  $templateCache.put("article/article.html", "<div class=\"article-page\">\n\n  <!-- Banner for article title, action buttons -->\n  <div class=\"banner\">\n    <div class=\"container\">\n\n      <h1 ng-bind=\"::$ctrl.article.title\"></h1>\n\n      <div class=\"article-meta\">\n        <!-- Show author info + favorite & follow buttons -->\n        <article-meta article=\"$ctrl.article\">\n          <button class=\"btn btn-sm btn-outline-secondary\">\n            <i class=\"ion-plus-round\"></i>\n            &nbsp;\n            Follow Brad Green\n          </button>\n          &nbsp;\n          <button class=\"btn btn-sm btn-outline-primary\">\n            <i class=\"ion-heart\"></i>\n            &nbsp;\n            Favorite Article <span class=\"counter\">(29)</span>\n          </button>\n        </aritcle-meta>\n      </div>\n\n    </div>\n  </div>\n\n\n\n  <!-- Main view. Contains article html and comments -->\n  <div class=\"container page\">\n\n    <!-- Article\'s HTML & tags rendered here -->\n    <div class=\"row article-content\">\n      <div class=\"col-xs-12\">\n\n        <div>\n          <div ng-bind-html=\"::$ctrl.article.body\"></div>\n        </div>\n\n        <ul class=\"tag-list\">\n          <li class=\"tag-default tag-pill tag-outline\"\n            ng-repeat=\"tag in ::$ctrl.article.tagList\">\n            {{ tag }}\n          </li>\n        </ul>\n\n      </div>\n    </div>\n\n    <hr />\n\n    <div class=\"article-actions\">\n      <!-- Show author info + favorite & follow buttons -->\n    </div>\n\n    <!-- Comments section -->\n    <div class=\"row\">\n      <div class=\"col-xs-12 col-md-8 offset-md-2\">\n\n        <div>\n          <form class=\"card comment-form\">\n            <div class=\"card-block\">\n              <textarea class=\"form-control\"\n                placeholder=\"Write a comment...\"\n                rows=\"3\"></textarea>\n            </div>\n            <div class=\"card-footer\">\n              <img class=\"comment-author-img\" />\n              <button class=\"btn btn-sm btn-primary\" type=\"submit\">\n               Post Comment\n              </button>\n            </div>\n          </form>\n        </div>\n\n        <div class=\"card\">\n          <div class=\"card-block\">\n            <p class=\"card-text\">This is an example comment.</p>\n          </div>\n          <div class=\"card-footer\">\n            <a class=\"comment-author\" href=\"\">\n              <img class=\"comment-author-img\" />\n            </a>\n            &nbsp;\n            <a class=\"comment-author\" href=\"\">\n              BradGreen\n            </a>\n            <span class=\"date-posted\">\n              Jan 20, 2016\n            </span>\n          </div>\n        </div>\n\n\n      </div>\n    </div>\n\n  </div>\n\n\n\n</div>\n");
+  $templateCache.put("auth/auth.html", "<div class=\"auth-page\">\n  <div class=\"container page\">\n    <div class=\"row\">\n\n      <div class=\"col-md-6 offset-md-3 col-xs-12\">\n        <h1 class=\"text-xs-center\" ng-bind=\"::$ctrl.title\"></h1>\n        <p class=\"text-xs-center\">\n          <a ui-sref=\"app.login\"\n            ng-show=\"$ctrl.authType === \'register\'\">\n            Have an account?\n          </a>\n          <a ui-sref=\"app.register\"\n            ng-show=\"$ctrl.authType === \'login\'\">\n            Need an account?\n          </a>\n        </p>\n\n        <list-errors errors=\"$ctrl.errors\"></list-errors>\n\n        <form ng-submit=\"$ctrl.submitForm()\">\n          <fieldset ng-disabled=\"$ctrl.isSubmitting\">\n\n            <fieldset class=\"form-group\" ng-show=\"$ctrl.authType === \'register\'\">\n              <input class=\"form-control form-control-lg\"\n                type=\"text\"\n                placeholder=\"Username\"\n                ng-model=\"$ctrl.formData.username\" />\n            </fieldset>\n\n            <fieldset class=\"form-group\">\n              <input class=\"form-control form-control-lg\"\n                type=\"email\"\n                placeholder=\"Email\"\n                ng-model=\"$ctrl.formData.email\" />\n            </fieldset>\n\n            <fieldset class=\"form-group\">\n              <input class=\"form-control form-control-lg\"\n                type=\"password\"\n                placeholder=\"Password\"\n                ng-model=\"$ctrl.formData.password\" />\n            </fieldset>\n\n            <button class=\"btn btn-lg btn-primary pull-xs-right\"\n              type=\"submit\" ng-bind=\"::$ctrl.title\">\n            </button>\n\n          </fieldset>\n        </form>\n      </div>\n\n    </div>\n  </div>\n</div>");
+  $templateCache.put("components/list-errors.html", "<ul class=\"error-messages\" ng-show=\"$ctrl.errors\">\n<!-- This iterates through every key in the object -->\n    <div ng-repeat=\"(field, errors) in $ctrl.errors\">\n    <!-- While this repeat is for the strings in the object -->\n        <li ng-repeat=\"error in errors\">\n        <!-- display the field (e-mail, pass etc) and the error associated to the field -->\n        {{field}} {{error}}\n        </li>\n    </div>\n</ul>");
+  $templateCache.put("editor/editor.html", "<div class=\"editor-page\">\n  <div class=\"container page\">\n    <div class=\"row\">\n      <div class=\"col-md-10 offset-md-1 col-xs-12\">\n\n        <list-errors errors=\"$ctrl.errors\"></list-errors>\n\n        <form>\n          <fieldset ng-disabled=\"$ctrl.isSubmitting\">\n\n            <fieldset class=\"form-group\">\n              <input class=\"form-control form-control-lg\"\n                ng-model=\"$ctrl.article.title\"\n                type=\"text\"\n                placeholder=\"Article Title\" />\n            </fieldset>\n\n            <fieldset class=\"form-group\">\n              <input class=\"form-control\"\n                ng-model=\"$ctrl.article.description\"\n                type=\"text\"\n                placeholder=\"What\'s this article about?\" />\n            </fieldset>\n\n            <fieldset class=\"form-group\">\n              <textarea class=\"form-control\"\n                rows=\"8\"\n                ng-model=\"$ctrl.article.body\"\n                placeholder=\"Write your article (in markdown)\">\n              </textarea>\n            </fieldset>\n\n            <fieldset class=\"form-group\">\n              <input class=\"form-control\"\n                type=\"text\"\n                placeholder=\"Enter tags\"\n                ng-model=\"$ctrl.tagField\"\n                ng-keyup=\"$event.keyCode == 13 && $ctrl.addTag()\" />\n\n              <div class=\"tag-list\">\n                <span ng-repeat=\"tag in $ctrl.article.tagList\"\n                  class=\"tag-default tag-pill\">\n                  <i class=\"ion-close-round\" ng-click=\"$ctrl.removeTag(tag)\"></i>\n                  {{ tag }}\n                </span>\n              </div>\n            </fieldset>\n\n            <button class=\"btn btn-lg pull-xs-right btn-primary\" type=\"button\" ng-click=\"$ctrl.submit()\">\n              Publish Article\n            </button>\n\n          </fieldset>\n        </form>\n\n      </div>\n    </div>\n  </div>\n</div>");
+  $templateCache.put("home/home.html", " <div class=\"home-page\">\n\n  <!-- Splash banner that only shows when not logged in -->\n  <div class=\"banner\" show-authed=\"false\">\n    <div class=\"container\">\n      <h1 class=\"logo-font\" ng-bind=\"::$ctrl.appName | lowercase\"></h1>\n      <p>A place to share your knowledge.</p>\n    </div>\n  </div>\n\n  <div class=\"container page\">\n    <div class=\"row\">\n\n\n      <!-- Main view - contains tabs & article list -->\n      <div class=\"col-md-9\">\n        <!-- Tabs for toggling between feed, article lists -->\n        <div class=\"feed-toggle\">\n          <ul class=\"nav nav-pills outline-active\">\n\n            <li class=\"nav-item\" show-authed=\"true\">\n              <a href=\"\" class=\"nav-link active\">\n                Your Feed\n              </a>\n            </li>\n\n            <li class=\"nav-item\">\n              <a href=\"\" class=\"nav-link\">\n                Global Feed\n              </a>\n            </li>\n\n          </ul>\n        </div>\n\n        <!-- List the current articles -->\n        <div class=\"article-preview\">\n          <div class=\"article-meta\">\n            <a href=\"\"><img /></a>\n            <div class=\"info\">\n              <a href=\"\" class=\"author\">BradGreen</a>\n              <span class=\"date\">January 20th</span>\n            </div>\n            <button class=\"btn btn-outline-primary btn-sm pull-xs-right\">\n              <i class=\"ion-heart\"></i> 29\n            </button>\n          </div>\n          <a href=\"\" class=\"preview-link\">\n            <h1>How to build Angular apps that scale</h1>\n            <p>Building web applications is not an easy task. It\'s even hard to make ones that scale.</p>\n            <span>Read more...</span>\n            <ul class=\"tag-list\">\n              <li class=\"tag-default tag-pill tag-outline\">programming</li>\n              <li class=\"tag-default tag-pill tag-outline\">web</li>\n            </ul>\n          </a>\n        </div>\n\n      </div>\n\n      <!-- Sidebar where popular tags are listed -->\n      <div class=\"col-md-3\">\n        <div class=\"sidebar\">\n\n          <p>Popular Tags</p>\n\n          <div class=\"tag-list\">\n            <a href=\"\" class=\"tag-default tag-pill\">\n              Tag One\n            </a>\n            <a href=\"\" class=\"tag-default tag-pill\">\n              Tag Two\n            </a>\n          </div>\n\n        </div>\n      </div>\n\n      <!-- End the row & container divs -->\n    </div>\n  </div>\n\n</div>\n");
+  $templateCache.put("layout/app-view.html", "<app-header></app-header>\n\n<div ui-view></div>\n\n<app-footer></app-footer>\n");
+  $templateCache.put("layout/footer.html", "<footer>\n  <div class=\"container\">\n    <a class=\"logo-font\" ui-sref=\"app.home\" ng-bind=\"::$ctrl.appName | lowercase\"></a>\n    <span class=\"attribution\">\n      &copy; {{::$ctrl.date | date:\'yyyy\'}}.\n      An interactive learning project from <a href=\"https://thinkster.io\">Thinkster</a>.\n      Code licensed under MIT.\n    </span>\n  </div>\n</footer>\n");
+  $templateCache.put("layout/header.html", "<nav class=\"navbar navbar-light\">\n  <div class=\"container\">\n\n    <a class=\"navbar-brand\"\n      ui-sref=\"app.home\"\n      ng-bind=\"::$ctrl.appName | lowercase\">\n    </a>\n\n    <!-- Show this for logged out users -->\n    <ul show-authed=\"false\"\n      class=\"nav navbar-nav pull-xs-right\">\n\n      <li class=\"nav-item\">\n        <a class=\"nav-link\"\n          ui-sref-active=\"active\"\n          ui-sref=\"app.home\">\n          <button class=\"btn\" \"btn-primary\" type=\"button\">Home</button>\n        </a>\n      </li>\n\n      <li class=\"nav-item\">\n        <a class=\"nav-link\"\n          ui-sref-active=\"active\"\n          ui-sref=\"app.login\">\n          <button class=\"btn\" \"btn-primary\" type=\"button\">Login</button>\n        </a>\n      </li>\n\n      <li class=\"nav-item\">\n        <a class=\"nav-link\"\n          ui-sref-active=\"active\"\n          ui-sref=\"app.register\">\n          <button class=\"btn\" \"btn-primary\" type=\"button\">Sign up</button>\n        </a>\n      </li>\n\n    </ul>\n\n    <!-- Show this for logged in users -->\n    <ul show-authed=\"true\"\n      class=\"nav navbar-nav pull-xs-right\">\n\n      <li class=\"nav-item\">\n        <a class=\"nav-link\"\n          ui-sref-active=\"active\"\n          ui-sref=\"app.home\">\n          <button class=\"btn\" \"btn-primary\" type=\"button\">Home</button>\n        </a>\n      </li>\n\n\n      <li class=\"nav-item\">\n        <a class=\"nav-link\"\n          ui-sref-active=\"active\"\n          ui-sref=\"app.editor\">\n          <button class=\"btn\" \"btn-primary\" type=\"button\">New Article</button>\n        </a>\n      </li>\n\n      <li class=\"nav-item\">\n        <a class=\"nav-link\"\n          ui-sref-active=\"active\"\n          ui-sref=\"app.settings\">\n          <button class=\"btn\" \"btn-primary\" type=\"button\">Settings</button>\n        </a>\n      </li>\n\n      <li class=\"nav-item\">\n        <a class=\"nav-link\"\n          ui-sref-active=\"active\"\n          ui-sref=\"app.profile({ username: $ctrl.currentUser.username})\">\n          <button class=\"btn\" \"btn-primary\" type=\"button\">{{ $ctrl.currentUser.username }}</button>\n        </a>\n      </li>\n\n    </ul>\n\n\n  </div>\n</nav>\n");
+  $templateCache.put("profile/profile.html", "<div class=\"profile-page\">\n\n  <!-- User\'s basic info & action buttons -->\n  <div class=\"user-info\">\n    <div class=\"container\">\n      <div class=\"row\">\n        <div class=\"col-xs-12 col-md-10 offset-md-1\">\n\n          <img ng-src=\"{{::$ctrl.profile.image}}\"img class=\"user-img\" />\n          <h4 ng-bind=\"::$ctrl.profile.username\"></h4>\n          <p ng-bind=\"::$ctrl.profile.bio\"></p>\n          <follow-btn user=\"$ctrl.profile\" ng-hide=\"$ctrl.isUser\"></follow-btn>\n\n          <a ui-sref=\"app.settings\"\n            class=\"btn btn-sm btn-outline-secondary action-btn\"\n            ng-show=\"$ctrl.isUser\">\n            <i class=\"ion-gear-a\"></i> Edit Profile Settings\n          </a>\n\n        </div>\n      </div>\n    </div>\n  </div>\n\n  <!-- Container where User\'s posts & favs are list w/ toggle tabs -->\n  <div class=\"container\">\n    <div class=\"row\">\n\n      <div class=\"col-xs-12 col-md-10 offset-md-1\">\n\n        <!-- Tabs for switching between author articles & favorites -->\n        <div class=\"articles-toggle\">\n          <ul class=\"nav nav-pills outline-active\">\n\n            <li class=\"nav-item\">\n              <a class=\"nav-link active\">\n                My Articles\n              </a>\n            </li>\n\n            <li class=\"nav-item\">\n              <a class=\"nav-link\">\n                Favorited Articles\n              </a>\n            </li>\n\n          </ul>\n        </div>\n\n        <!-- List of articles -->\n        <div class=\"article-preview\">\n          <div class=\"article-meta\">\n            <a href=\"\"><img /></a>\n            <div class=\"info\">\n              <a href=\"\" class=\"author\">BradGreen</a>\n              <span class=\"date\">January 20th</span>\n            </div>\n            <button class=\"btn btn-outline-primary btn-sm pull-xs-right\">\n              <i class=\"ion-heart\"></i> 29\n            </button>\n          </div>\n          <a href=\"\" class=\"preview-link\">\n            <h1>How to build Angular apps that scale</h1>\n            <p>Building web applications is not an easy task. It\'s even hard to make ones that scale.</p>\n            <span>Read more...</span>\n            <ul class=\"tag-list\">\n              <li class=\"tag-default tag-pill tag-outline\">programming</li>\n              <li class=\"tag-default tag-pill tag-outline\">web</li>\n            </ul>\n          </a>\n        </div>\n\n\n      </div>\n\n    <!-- End row & container divs -->\n    </div>\n  </div>\n\n</div>\n");
+  $templateCache.put("settings/settings.html", "<div class=\"settings-page\">\n  <div class=\"container page\">\n    <div class=\"row\">\n      <div class=\"col-md-6 offset-md-3 col-xs-12\">\n\n        <h1 class=\"text-xs-center\">Your Settings</h1>\n\n        <list-errors errors=\"$ctrl.errors\"></list-errors>\n\n        <form ng-submit=\"$ctrl.submitForm()\">\n          <fieldset ng-disabled=\"$ctrl.isSubmitting\">\n\n            <fieldset class=\"form-group\">\n              <input class=\"form-control\"\n                type=\"text\"\n                placeholder=\"URL of profile picture\"\n                ng-model=\"$ctrl.formData.image\" />\n            </fieldset>\n\n            <fieldset class=\"form-group\">\n              <input class=\"form-control form-control-lg\"\n                type=\"text\"\n                placeholder=\"Username\"\n                ng-model=\"$ctrl.formData.username\" />\n            </fieldset>\n\n            <fieldset class=\"form-group\">\n              <textarea class=\"form-control form-control-lg\"\n                rows=\"8\"\n                placeholder=\"Short bio about you\"\n                ng-model=\"$ctrl.formData.bio\">\n              </textarea>\n            </fieldset>\n\n            <fieldset class=\"form-group\">\n              <input class=\"form-control form-control-lg\"\n                type=\"email\"\n                placeholder=\"Email\"\n                ng-model=\"$ctrl.formData.email\" />\n            </fieldset>\n\n            <fieldset class=\"form-group\">\n              <input class=\"form-control form-control-lg\"\n                type=\"password\"\n                placeholder=\"New Password\"\n                ng-model=\"$ctrl.formData.password\" />\n            </fieldset>\n\n            <button class=\"btn btn-lg btn-primary pull-xs-right\"\n              type=\"submit\">\n              Update Settings\n            </button>\n\n          </fieldset>\n        </form>\n\n        <!-- Line break for logout button -->\n        <hr />\n\n        <button class=\"btn btn-outline-danger\"\n                ng-click=\"$ctrl.logout()\">\n          Or click here to logout.\n        </button>\n\n      </div>\n    </div>\n  </div>\n</div>");
+  $templateCache.put("components/article-helpers/article-meta.html", "<div class=\"article-meta\">\n  <a ui-sref=\"app.profile({ username:$ctrl.article.author.username })\">\n    <img ng-src=\"{{$ctrl.article.author.image}}\" />\n  </a>\n\n  <div class=\"info\">\n    <a class=\"author\"\n      ui-sref=\"app.profile({ username:$ctrl.article.author.username })\"\n      ng-bind=\"$ctrl.article.author.username\">\n    </a>\n    <span class=\"date\"\n      ng-bind=\"$ctrl.article.createdAt | date: \'longDate\' \">\n    </span>\n  </div>\n\n  <ng-transclude></ng-transclude>\n</div>");
+  $templateCache.put("components/buttons/follow-btn.html", "<button\n    ng-class=\"{ \'disabled\' : $ctrl.isSubmitting,\n                \'btn-outline-secondary\': !$ctrl.user.following,\n                \'btn-secondary\': $ctrl.user.following }\"\n    \"btn btn-sm btn-outline-secondary action-btn\"\n    ng-click=\"$ctrl.submit()\">\n    <i class=\"ion-plus-round\"></i>\n    &nbsp;\n    {{ $ctrl.user.following ? \'Unfollow\' : \'Follow\'}} {{ $ctrl.user.username}}\n</button>");
 }]);
 
-},{}],21:[function(require,module,exports){
+},{}],22:[function(require,module,exports){
 'use strict';
 
 authInterceptor.$inject = ["JWT", "AppConstants", "$window", "$q"];
@@ -39494,7 +39526,7 @@ function authInterceptor(JWT, AppConstants, $window, $q) {
 
 exports.default = authInterceptor;
 
-},{}],22:[function(require,module,exports){
+},{}],23:[function(require,module,exports){
 'use strict';
 
 EditorConfig.$inject = ["$stateProvider"];
@@ -39537,7 +39569,7 @@ function EditorConfig($stateProvider) {
 
 exports.default = EditorConfig;
 
-},{}],23:[function(require,module,exports){
+},{}],24:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -39607,7 +39639,7 @@ var EditorCtrl = function () {
 
 exports.default = EditorCtrl;
 
-},{}],24:[function(require,module,exports){
+},{}],25:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -39641,7 +39673,7 @@ editorModule.controller('EditorCtrl', _editor4.default);
 
 exports.default = editorModule;
 
-},{"./editor.config":22,"./editor.controller":23,"angular":3}],25:[function(require,module,exports){
+},{"./editor.config":23,"./editor.controller":24,"angular":3}],26:[function(require,module,exports){
 'use strict';
 
 HomeConfig.$inject = ["$stateProvider"];
@@ -39662,7 +39694,7 @@ function HomeConfig($stateProvider) {
 
 exports.default = HomeConfig;
 
-},{}],26:[function(require,module,exports){
+},{}],27:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -39682,7 +39714,7 @@ HomeCtrl.$inject = ["AppConstants"];
 
 exports.default = HomeCtrl;
 
-},{}],27:[function(require,module,exports){
+},{}],28:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -39716,7 +39748,7 @@ homeModule.controller('HomeCtrl', _home4.default);
 
 exports.default = homeModule;
 
-},{"./home.config":25,"./home.controller":26,"angular":3}],28:[function(require,module,exports){
+},{"./home.config":26,"./home.controller":27,"angular":3}],29:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -39744,7 +39776,7 @@ var AppFooter = {
 
 exports.default = AppFooter;
 
-},{}],29:[function(require,module,exports){
+},{}],30:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -39778,7 +39810,7 @@ var AppHeader = {
 
 exports.default = AppHeader;
 
-},{}],30:[function(require,module,exports){
+},{}],31:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -39810,7 +39842,7 @@ layoutModule.component('appFooter', _footer2.default);
 
 exports.default = layoutModule;
 
-},{"./footer.component":28,"./header.component":29,"angular":3}],31:[function(require,module,exports){
+},{"./footer.component":29,"./header.component":30,"angular":3}],32:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -39844,7 +39876,7 @@ profileModule.controller('ProfileCtrl', _profile4.default);
 
 exports.default = profileModule;
 
-},{"./profile.config":32,"./profile.controller":33,"angular":3}],32:[function(require,module,exports){
+},{"./profile.config":33,"./profile.controller":34,"angular":3}],33:[function(require,module,exports){
 'use strict';
 
 ProfileConfig.$inject = ["$stateProvider"];
@@ -39884,7 +39916,7 @@ function ProfileConfig($stateProvider) {
 
 exports.default = ProfileConfig;
 
-},{}],33:[function(require,module,exports){
+},{}],34:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -39906,7 +39938,7 @@ ProfileCtrl.$inject = ["profile", "User"];
 
 exports.default = ProfileCtrl;
 
-},{}],34:[function(require,module,exports){
+},{}],35:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -39984,7 +40016,7 @@ var Articles = function () {
 
 exports.default = Articles;
 
-},{}],35:[function(require,module,exports){
+},{}],36:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -40026,7 +40058,7 @@ servicesModule.service('Articles', _articles2.default);
 
 exports.default = servicesModule;
 
-},{"./articles.service":34,"./jwt.service":36,"./profile.service":37,"./user.service":38,"angular":3}],36:[function(require,module,exports){
+},{"./articles.service":35,"./jwt.service":37,"./profile.service":38,"./user.service":39,"angular":3}],37:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -40087,7 +40119,7 @@ var JWT = function () {
 
 exports.default = JWT;
 
-},{}],37:[function(require,module,exports){
+},{}],38:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -40146,7 +40178,7 @@ var Profile = function () {
 
 exports.default = Profile;
 
-},{}],38:[function(require,module,exports){
+},{}],39:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -40298,7 +40330,7 @@ var User = function () {
 
 exports.default = User;
 
-},{}],39:[function(require,module,exports){
+},{}],40:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -40331,7 +40363,7 @@ settingsModule.controller('SettingsCtrl', _settings4.default);
 
 exports.default = settingsModule;
 
-},{"./settings.config":40,"./settings.controller":41,"angular":3}],40:[function(require,module,exports){
+},{"./settings.config":41,"./settings.controller":42,"angular":3}],41:[function(require,module,exports){
 'use strict';
 
 SettingsConfig.$inject = ["$stateProvider"];
@@ -40357,7 +40389,7 @@ function SettingsConfig($stateProvider) {
 
 exports.default = SettingsConfig;
 
-},{}],41:[function(require,module,exports){
+},{}],42:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
